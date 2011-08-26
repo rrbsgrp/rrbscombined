@@ -1,0 +1,43 @@
+<div class="left"> 
+<h2><a href="#">VIEW UNITS</a></h2>
+<hr />
+<br/>
+<form action="form_action.asp" method="get">
+<table width="500" border="0">
+  <tr>
+    <td>Unit:</td>
+    <td><input type="text" name="Unit" /></td>
+  </tr>
+  <tr>
+	<td>&nbsp;</td>
+	<td><input type="submit" value=" Search " /></td>
+  </tr>
+</table>
+</form>
+<br/><br/>
+
+</div>
+
+<div class="right"></div>
+<div style="clear: both;"></div>
+<table border="1">
+  <tr>
+    <th>Unit name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @units.each do |unit| %>
+  <tr>
+    <td><%= unit.unit_name %></td>
+    <td><%= link_to 'Show', unit %></td>
+    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+    <td><%= link_to 'Destroy', unit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Unit', new_unit_path %>

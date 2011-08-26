@@ -1,0 +1,33 @@
+<%= form_for(@ecrow) do |f| %>
+  <% if @ecrow.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ecrow.errors.count, "error") %> prohibited this ecrow from being saved:</h2>
+
+      <ul>
+      <% @ecrow.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :endcount_id %><br />
+    <%= f.text_field :endcount_id %>
+  </div>
+  <div class="field">
+    <%= f.label :inventory_id %><br />
+    <%= f.text_field :inventory_id %>
+  </div>
+  <div class="field">
+    <%= f.label :beginning_quantity %><br />
+    <%= f.text_field :beginning_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :endcount_quantity %><br />
+    <%= f.text_field :endcount_quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

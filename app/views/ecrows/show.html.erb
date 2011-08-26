@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Endcount:</b>
+  <%= @ecrow.endcount_id %>
+</p>
+
+<p>
+  <b>Inventory:</b>
+  <%= @ecrow.inventory_id %>
+</p>
+
+<p>
+  <b>Beginning quantity:</b>
+  <%= @ecrow.beginning_quantity %>
+</p>
+
+<p>
+  <b>Endcount quantity:</b>
+  <%= @ecrow.endcount_quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_ecrow_path(@ecrow) %> |
+<%= link_to 'Back', ecrows_path %>

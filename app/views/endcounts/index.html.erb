@@ -1,0 +1,65 @@
+<div class="left"> 
+<h2><a href="#">VIEW PERIOD END</a></h2>
+<hr />
+<br/>
+<form action="form_action.asp" method="get">
+<table width="500" border="0">
+  <tr>
+    <td>Restaurant:</td>
+    <td><input type="text" name="invoice_number" /></td>
+    <td>Category:</td>
+    <td><input type="text" name="category" /></td>
+  </tr>
+  <tr>
+    <td>Branch:</td>
+    <td><input type="text" name="branch" /></td>
+    <td>Sub Category:</td>
+    <td><input type="text" name="subcategory" /></td>
+  </tr>
+  <tr>
+    <td>Start Date:</td>
+    <td><input type="text" name="from" /></td>
+    <td>Item:</td>
+    <td><input type="text" name="item" /></td>
+  </tr>
+  <tr>
+    <td>End Date:</td>
+    <td><input type="text" name="end_date" /></td>
+    <td>&nbsp;</td>
+    <td><input type="submit" value=" Search " /></td>
+  </tr>
+</table>
+</form>
+<br/><br/>
+
+</div>
+
+<div class="right"></div>
+<div style="clear: both;"></div>
+<table border="1">
+  <tr>
+    <th>Beginning date</th>
+    <th>Endcount date</th>
+	<th>Item</th>
+	<th>Beginning Count</th>
+	<th>End Count</th>
+    <th>Edit</th>
+  </tr>
+
+<% @endcounts.each do |endcount| %>
+	<% for ecrow in endcount.ecrows %>
+		<tr>
+		<td><%= endcount.beginning_date %></td>
+		<td><%= endcount.endcount_date %></td>
+		<td><%=h ecrow.inventory_id %></td>
+		<td><%=h ecrow.beginning_quantity %></td>
+		<td><%=h ecrow.endcount_quantity %></td>
+		<td><%= link_to 'Edit', edit_endcount_path(endcount) %></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Endcount', new_endcount_path %>

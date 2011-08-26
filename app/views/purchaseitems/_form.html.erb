@@ -1,0 +1,63 @@
+<%= form_for(@purchaseitem) do |f| %>
+  <% if @purchaseitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchaseitem.errors.count, "error") %> prohibited this purchaseitem from being saved:</h2>
+
+      <ul>
+      <% @purchaseitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :purchase_date %><br />
+    <%= f.text_field :purchase_date %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_id %><br />
+    <%= f.text_field :invoice_id %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id %><br />
+    <%= f.text_field :supplier_id %>
+  </div>
+  <div class="field">
+    <%= f.label :branch_id %><br />
+    <%= f.text_field :branch_id %>
+  </div>
+  <div class="field">
+    <%= f.collection_select :inventory_id, Inventoryitem.find(:all), :id, :item_name, :prompt => "Select item" %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_unitcost %><br />
+    <%= f.text_field :purchase_unitcost %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_quantity %><br />
+    <%= f.text_field :purchase_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_amount %><br />
+    <%= f.text_field :purchase_amount %>
+  </div>
+  <div class="field">
+    
+	<%= f.radio_button :vat_type, "VAT-Inclusive" %>VAT-Inclusive<br />
+	<%= f.radio_button :vat_type, "VAT-Exclusive" %>VAT-Exclusive<br />
+	<%= f.radio_button :vat_type, "VAT-Exempted" %>VAT-Exempted
+	
+  </div>
+  <div class="field">
+    <%= f.label :vat_amount %><br />
+    <%= f.text_field :vat_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :net_amount %><br />
+    <%= f.text_field :net_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

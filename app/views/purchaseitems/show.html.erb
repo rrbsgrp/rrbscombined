@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Purchase date:</b>
+  <%= @purchaseitem.purchase_date %>
+</p>
+
+<p>
+  <b>Invoice:</b>
+  <%= @purchaseitem.invoice_id %>
+</p>
+
+<p>
+  <b>Supplier:</b>
+  <%= @purchaseitem.supplier_id %>
+</p>
+
+<p>
+  <b>Branch:</b>
+  <%= @purchaseitem.branch_id %>
+</p>
+
+<p>
+  <b>Inventory:</b>
+  <%= @purchaseitem.inventory_id %>
+</p>
+
+<p>
+  <b>Purchase unitcost:</b>
+  <%= @purchaseitem.purchase_unitcost %>
+</p>
+
+<p>
+  <b>Purchase quantity:</b>
+  <%= @purchaseitem.purchase_quantity %>
+</p>
+
+<p>
+  <b>Purchase amount:</b>
+  <%= @purchaseitem.purchase_amount %>
+</p>
+
+<p>
+  <b>Vat type:</b>
+  <%= @purchaseitem.vat_type %>
+</p>
+
+<p>
+  <b>Vat amount:</b>
+  <%= @purchaseitem.vat_amount %>
+</p>
+
+<p>
+  <b>Net amount:</b>
+  <%= @purchaseitem.net_amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_purchaseitem_path(@purchaseitem) %> |
+<%= link_to 'Back', purchaseitems_path %>

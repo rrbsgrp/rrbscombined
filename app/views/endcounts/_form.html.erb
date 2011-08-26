@@ -1,0 +1,42 @@
+<%= form_for(@endcount) do |f| %>
+  <% if @endcount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@endcount.errors.count, "error") %> prohibited this endcount from being saved:</h2>
+
+      <ul>
+      <% @endcount.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+	<%= f.label :beginning_date %><br />
+	<%= f.text_field :beginning_date %>
+  </div>
+  <div class="field">
+	<%= f.label :endcount_date %><br />
+	<%= f.text_field :endcount_date %>
+  </div>
+  
+  <table border="1">
+	<tr>
+		<th>Item</th>
+		<th>Beginning Count</th>
+		<th>End Count</th>
+	</tr>
+  
+	<% f.fields_for :ecrows do |builder| %>
+		<tr>
+			<td><%= builder.collection_select :inventory_id, Inventoryitem.find(:all), :id, :item_name, :prompt => "Select item" %></td>
+			<td><%= builder.text_field :beginning_quantity %></td>
+			<td><%= builder.text_field :endcount_quantity %></td>
+		</tr>
+	<% end %>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

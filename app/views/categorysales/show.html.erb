@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cs amount:</b>
+  <%= @categorysale.cs_amount %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @categorysale.category_id %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @categorysale.employee_id %>
+</p>
+
+<p>
+  <b>Vat:</b>
+  <%= @categorysale.vat %>
+</p>
+
+<p>
+  <b>Void:</b>
+  <%= @categorysale.void %>
+</p>
+
+<p>
+  <b>Servicecharge:</b>
+  <%= @categorysale.servicecharge %>
+</p>
+
+<p>
+  <b>Cs revenue:</b>
+  <%= @categorysale.cs_revenue %>
+</p>
+
+
+<%= link_to 'Edit', edit_categorysale_path(@categorysale) %> |
+<%= link_to 'Back', categorysales_path %>

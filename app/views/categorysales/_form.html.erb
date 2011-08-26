@@ -1,0 +1,79 @@
+<%= form_for(@categorysale) do |f| %>
+  <% if @categorysale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@categorysale.errors.count, "error") %> prohibited this categorysale from being saved:</h2>
+      <ul>
+      <% @categorysale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <br />  
+<table width="190" border="0">
+<!--<tr>
+    <td><%= label_tag :ServerName %></td>
+    <td><%= collection_select('categorysale','employee_id',Employee.all.collect,'id','employee_firstName') %></td>
+</table>
+  <br />-->
+ 
+  
+<table width="700" border="0">
+  <tr>
+    <td>Branch:</td>
+    <td><%= text_field_tag :branch,'',:disabled => true %></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><%= label_tag :date %></td>
+    <td><%= text_field_tag :date %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><%= label_tag :food %></td>
+    <td><%= text_field_tag :food %></td>
+    <td><%= label_tag :vat %></td>
+    <td><%= text_field_tag :vat %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag :beverages %></td>
+    <td><%= text_field_tag :beverages %></td>
+    <td><%= label_tag "VOID" %></td>
+    <td><%= text_field_tag :void %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag "liquor" %></td>
+    <td><%= text_field_tag :liquor %></td>
+    <td><%= label_tag "Service Charge" %></td>
+    <td><%= text_field_tag :servicecharge %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag "TOTAL" %></td>
+    <td><%= text_field_tag :cs_amount %></td>
+    <td><%= label_tag "Total Revenue" %></td>
+    <td><%= text_field_tag :cs_revenue %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag "Customer Count" %></td>
+    <td><%= text_field_tag :customer_count %></td>
+    <td><%= label_tag "Transaction Count" %></td>
+    <td><%= text_field_tag :transaction_count %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><%= f.submit  "Save" %></td>
+  </tr>
+</table>
+
+<% end %>

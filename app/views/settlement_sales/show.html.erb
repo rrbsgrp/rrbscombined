@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ss amount:</b>
+  <%= @settlement_sale.ss_amount %>
+</p>
+
+<p>
+  <b>St:</b>
+  <%= @settlement_sale.st_id %>
+</p>
+
+<p>
+  <b>Stemployee:</b>
+  <%= @settlement_sale.employee_id %>
+</p>
+
+<p>
+  <b>Vat:</b>
+  <%= @settlement_sale.vat %>
+</p>
+
+<p>
+  <b>Void:</b>
+  <%= @settlement_sale.void %>
+</p>
+
+<p>
+  <b>Ss date:</b>
+  <%= @settlement_sale.ss_date %>
+</p>
+
+<p>
+  <b>Ss revenue:</b>
+  <%= @settlement_sale.ss_revenue %>
+</p>
+
+<p>
+  <b>Customercount:</b>
+  <%= @settlement_sale.customerCount %>
+</p>
+
+<p>
+  <b>Transactioncount:</b>
+  <%= @settlement_sale.transactionCount %>
+</p>
+
+
+<%= link_to 'Edit', edit_settlement_sale_path(@settlement_sale) %> |
+<%= link_to 'Back', settlement_sales_path %>

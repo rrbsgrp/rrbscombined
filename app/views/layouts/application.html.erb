@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>RRBS</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+  <script type="text/javascript" src="public/javascripts/signin.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<div id="headerwrap">
+<div id="header">
+<h1><a href="#">RRBS</a></h1>
+<h2>Restaurant Report and Backup System</h2>
+</div>
+
+<div><a href="#" class="sign_in">Sign In</a></div>
+<div id="sign_box">
+        <form method="post" action="">
+        <label>UserName
+        <input type="text" name="usr"/></label>
+        <label>Password
+        <input type='password' name="pwd"/></label>
+        <input type="submit" value=" Sign In "/>
+</form></div>
+</div>
+
+<div id="menu">
+<ul>
+<li><%= link_to 'Sales', categorysales_path %></li>
+<li><%= link_to 'Purchases', purchaseitems_path %></li>
+<li><%= link_to 'Period End', endcounts_path %></li>
+<li><a href="">Inventory</a></li>
+<li><a href="">Employees</a></li>
+<li><a href="">Database</a></li>
+<li><a href="">Records</a></li>
+<li><a href="">User Accounts</a></li>
+</ul>
+</div>
+
+<div id="content">
+<%= yield %>
+</div>
+
+</body>
+</html>
+

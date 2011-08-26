@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h2><a href="#">VIEW END COUNT</a></h2>
+<br />
+<hr />
+<br />
+<p>
+  <b>Beginning date:</b>
+  <%= @endcount.beginning_date %>
+</p>
+<p>
+  <b>Endcount date:</b>
+  <%= @endcount.endcount_date %>
+</p>
+<br />
+<hr />
+<br />
+<p>
+	<% for ecrow in @endcount.ecrows %>
+		Inventory Item: <%=h ecrow.inventory_id %><br />
+		Beginning Count: <%=h ecrow.beginning_quantity %><br />
+		End Count: <%=h ecrow.endcount_quantity %><br /><br />
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_endcount_path(@endcount) %> |
+<%= link_to 'Back', endcounts_path %>

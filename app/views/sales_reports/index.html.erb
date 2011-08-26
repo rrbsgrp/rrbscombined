@@ -1,0 +1,171 @@
+<div class="left"> 
+<h2><a href="#">SALES REPORTS</a></h2>
+<hr />
+<br/>
+<% form_tag '/' do %>
+<table width="500" border="0">
+  <tr>
+	<td>From:</td>
+	<td><%= date_select(:start, '', :start_year => 1950) %></td>
+	<td><%= label_tag :restaurant %></td>
+	<td><%= text_field_tag :restaurant  %></td>
+  </tr>
+  <tr>
+	<td>To:</td>
+	<td><%= date_select(:end, '', :start_year => 2000) %></td>
+	<td>Branch:</td>
+	<td><%= text_field_tag :branch %></td>
+  </tr>
+  <tr>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  <td>&nbsp;</td>
+	<td><%= submit_tag :Search %></td>
+  <% end %>
+  </tr>
+</table>
+<br/>
+
+</div>
+<div class="right">
+<strong>Change View: </strong>
+<br />
+<!--
+<select>
+  <option>Sales by Category</option>
+  <option>Sales by Settlement Type</option>
+  <option>Sales by Server:</option>
+  <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</option>
+  <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settlement Type</option>
+</select>-->
+<%= link_to '', categorysales_path %><br />
+<%= link_to '', settlement_sales_path %><br />
+<%= link_to '', serversales_path %>
+</div>
+<div style="clear:both;"></div>
+<hr />
+
+<h1><a href="#">Daily Sales</a></h1>
+<br />
+<h2><%= Date.today.to_s %></h2>
+<br />
+<table width="500">
+<tr>
+  <td><b>Category Sales</b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>Amount</td>
+  <td>&nbsp;</td>
+  <td>Amount</td>
+</tr>
+<tr>
+<% food = 0 %>
+<% liquor = 0 %>
+<% beverages = 0 %>
+<% @category_sales.each do |cs| %>
+  <% if cs.category_id==0 %>
+    <% food = cs.cs_amount %>
+  <% elsif cs.category_id==1 %>
+    <% liquor = cs.cs_amount %>
+  <% elsif cs.category_id==2 %>
+    <% beverages = cs.cs_amount %>
+  <% end %>
+<% end %>
+  <td>Food</td>
+  <td><b><%= p "#{food}" %></b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Liquor</td>
+  <td><b><%= p "#{liquor}" %></b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Beverages</td>
+  <td><b><%= p "#{beverages}" %></b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Total Revenue</td>
+  <td><b>&#36;<%= @category_sales.first.cs_revenue %></b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Customer Count</td>
+  <td><b><%= @category_sales.first.customer_count %></b></td>
+  <td>Transaction Count</td>
+  <td><b><%= @category_sales.first.transaction_count %></b></td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><b>Settlement Sales</b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+    <% cash = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,10).map(&:ss_amount) %>
+    <% creditcard = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,9).map(&:ss_amount) %>
+    <% comp92 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,2).map(&:ss_amount) %>
+    <% comp91 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,1).map(&:ss_amount) %>
+    <% comp93 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,3).map(&:ss_amount) %>
+    <% comp94 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,4).map(&:ss_amount) %>
+    <% comp95 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,5).map(&:ss_amount) %>
+    <% comp96 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,6).map(&:ss_amount) %>
+    <% comp97 = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,7).map(&:ss_amount) %>
+    <% giftcertificate = SettlementSale.where("ss_date = ? AND st_id = ?",Date.today.to_s,11).map(&:ss_amount) %>
+<tr>
+  <td>Cash</td>
+  <td><%= cash.sum %></td>
+  <td>Credit Card</td>
+  <td><%= creditcard.sum %></td>
+</tr>
+<tr>
+  <td>Comp 91</td>
+  <td><%= comp91.sum %></td>
+  <td>Comp 92</td>
+  <td><%= comp92.sum  %></td>
+</tr>
+<tr>
+  <td>Comp 93</td>
+  <td><%= comp93.sum  %></td>
+  <td>Comp 94</td>
+  <td><%= comp94.sum  %></td>
+</tr>
+<tr>
+  <td>Comp 95</td>
+  <td><%= comp95.sum  %></td>
+  <td>Comp 96</td>
+  <td><%= comp96.sum  %></td>
+</tr>
+<tr>
+  <td>Comp 97</td>
+  <td><%= comp97.sum  %></td>
+  <td>Gift Certificate</td>
+  <td><%= giftcertificate.sum %></td>
+</tr>
+<tr>
+  <td>Gross Total</td>
+  <td><%= @settlement_sales.first.gross_total  %></td>
+  <td>Net Total</td>
+  <td><%= @settlement_sales.first.net_total %></td>
+</tr>
+<tr>
+  <td>VOID</td>
+  <td><%= @settlement_sales.first.void %></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+</table>
