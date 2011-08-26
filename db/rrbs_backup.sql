@@ -77,7 +77,7 @@ INSERT INTO `categories` (`id`,`category_name`,`category_description`,`restauran
 
 DROP TABLE IF EXISTS `categorysales`;
 CREATE TABLE `categorysales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `cs_amount` float DEFAULT NULL,
   `category_id` int(11) NOT NULL DEFAULT '0',
   `employee_id` int(11) DEFAULT NULL,
@@ -90,11 +90,8 @@ CREATE TABLE `categorysales` (
   `date` date DEFAULT NULL,
   `customer_count` int(11) DEFAULT NULL,
   `transaction_count` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`,`category_id`) USING BTREE,
-  KEY `FK_categorysales_1` (`category_id`),
-  KEY `FK_categorysales_employees` (`employee_id`),
-  CONSTRAINT `FK_categorysales_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `FK_categorysales_employees` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
+  FOREIGN KEY (`category_id`) references `categories` (`id`),
+  FOREIGN KEY (`employee_id`) references `employees` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=latin1;
 
 --

@@ -41,8 +41,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
   end
 
-  create_table "categorysales", :id => false, :force => true do |t|
-    t.integer  "id",                               :null => false
+  create_table "categorysales", :force => true do |t|
     t.float    "cs_amount"
     t.integer  "category_id",       :default => 0, :null => false
     t.integer  "employee_id"
@@ -57,8 +56,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "transaction_count"
   end
 
-  add_index "categorysales", ["category_id"], :name => "FK_categorysales_1"
-  add_index "categorysales", ["employee_id"], :name => "FK_categorysales_employees"
+  add_index "categorysales", ["category_id"], :name => "category_id"
+  add_index "categorysales", ["employee_id"], :name => "employee_id"
 
   create_table "ecrows", :force => true do |t|
     t.integer  "endcount_id"
